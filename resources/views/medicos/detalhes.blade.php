@@ -7,7 +7,9 @@
 <div class="container">
 	<div class="col-sm-offset-1 col-sm-10">
 		@if(Auth::guest())
-		<div class="alert alert-danger">Efetue login para avaliar esse médico!</div>
+		<div class="alert alert-danger">
+			Efetue login para avaliar esse médico!
+		</div>
 		@endif
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -37,51 +39,24 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<strong>{{ $avaliacao->user->name }}</strong>
-					- {{ date('d/m/Y', strtotime($avaliacao->created_at)) }}</div>
-					<div class="panel-body">
-						<p><strong>Nota:</strong>
-							@if($avaliacao->nota == '1')
-							<span class="glyphicon glyphicon-star"></span>
-							<span class="glyphicon glyphicon-star-empty"></span>
-							<span class="glyphicon glyphicon-star-empty"></span>
-							<span class="glyphicon glyphicon-star-empty"></span>
-							<span class="glyphicon glyphicon-star-empty"></span>
-							@elseif($avaliacao->nota == '2')
-							<span class="glyphicon glyphicon-star"></span>
-							<span class="glyphicon glyphicon-star"></span>
-							<span class="glyphicon glyphicon-star-empty"></span>
-							<span class="glyphicon glyphicon-star-empty"></span>
-							<span class="glyphicon glyphicon-star-empty"></span>
-							@elseif($avaliacao->nota == '3')
-							<span class="glyphicon glyphicon-star"></span>
-							<span class="glyphicon glyphicon-star"></span>
-							<span class="glyphicon glyphicon-star"></span>
-							<span class="glyphicon glyphicon-star-empty"></span>
-							<span class="glyphicon glyphicon-star-empty"></span>
-							@elseif($avaliacao->nota == '4')
-							<span class="glyphicon glyphicon-star"></span>
-							<span class="glyphicon glyphicon-star"></span>
-							<span class="glyphicon glyphicon-star"></span>
-							<span class="glyphicon glyphicon-star"></span>
-							<span class="glyphicon glyphicon-star-empty"></span>
-							@elseif($avaliacao->nota == '5')
-							<span class="glyphicon glyphicon-star"></span>
-							<span class="glyphicon glyphicon-star"></span>
-							<span class="glyphicon glyphicon-star"></span>
-							<span class="glyphicon glyphicon-star"></span>
-							<span class="glyphicon glyphicon-star"></span>
-							@endif
-						</p>
-						<p><strong>Comentário:</strong> {{ $avaliacao->comentario }}</p>
-					</div>
+					- {{ date('d/m/Y', strtotime($avaliacao->created_at)) }}
 				</div>
+				<div class="panel-body">
+					<p>
+						<strong>Nota:</strong>
 
-				@endforeach
-				@else
-				<div class="well">Esse médico não possui avaliações.</div>
-				@endif
-
+						@include('common.estrelas')
+					</p>
+					<p><strong>Comentário:</strong> {{ $avaliacao->comentario }}</p>
+				</div>
 			</div>
-		</div>
 
-		@endsection
+			@endforeach
+			@else
+			<div class="well">Esse médico não possui avaliações.</div>
+			@endif
+
+		</div>
+	</div>
+
+	@endsection
