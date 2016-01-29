@@ -66,3 +66,5 @@ Route::post('Registro', 'Auth\AuthController@postRegister');
 
 //Logout
 Route::get('Logout', 'Auth\AuthController@getLogout');
+
+Route::get('Usuario/Avaliacoes', 'UsuarioController@avaliacoes');

@@ -60,29 +60,42 @@
 									<ul class="dropdown-menu">
 										<li>
 											<a>
-												{{ (Auth::user()->name) }}</a>
-											</li>
+												<i class="fa fa-btn fa-user"></i> {{ (Auth::user()->name) }}
+											</a>
+										</li>
 
-											@if(Auth::user()->nivel == 1)
-											<li><a href="{{ action('AdministradorController@index') }}">
-												<i class="fa fa-btn fa-lock"></i> Área Administrativa</a></li>
-												@endif
-												<li><a href="{{ action('Auth\AuthController@getLogout') }}"><i class="fa fa-btn fa-sign-out"></i>Sair</a></li>
-											</ul>
+										@if(Auth::user()->nivel == 1)
+										<li>
+											<a href="{{ action('AdministradorController@index') }}">
+												<i class="fa fa-btn fa-lock"></i> Área Administrativa
+											</a>
 										</li>
 										@endif
+										<li>
+											<a href="{{ action('UsuarioController@avaliacoes') }}">
+												<i class="fa fa-btn fa-comments"></i> Meu Comentários
+											</a>
+										</li>
+										<li>
+											<a href="{{ action('Auth\AuthController@getLogout') }}">
+												<i class="fa fa-btn fa-sign-out"></i> Sair
+											</a>
+										</li>
 									</ul>
-								</div>
-							</div>
-						</nav>
+								</li>
+								@endif
+							</ul>
+						</div>
 					</div>
+				</nav>
+			</div>
 
-					<div id="content">
-						@yield('content')
-					</div>
-				</div>
-				@yield('footer')
-			</body>
+			<div id="content">
+				@yield('content')
+			</div>
+		</div>
+		@yield('footer')
+	</body>
 
-			
-			</html>
+
+	</html>
