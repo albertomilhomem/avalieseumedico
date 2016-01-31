@@ -16,7 +16,7 @@
 <body>
 	<div>
 		<div>
-			<nav class="navbar navbar-default navbar-static-top">
+			<nav class="navbar navbar-inverse navbar-static-top">
 				<div class="container">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -54,48 +54,56 @@
 							<li><a href="{{ action('Auth\AuthController@getLogin') }}"><i class="fa fa-btn fa-sign-in"></i> Login</a></li>
 							@else
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-									<i class="fa fa-btn fa-user"></i>
-									<span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										<li>
-											<a>
-												<i class="fa fa-btn fa-user"></i> {{ (Auth::user()->name) }}
-											</a>
-										</li>
+								<a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">
+									<img src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" height="30" width="30" class="img-circle special-img">
+									<b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a>
+											{{ (Auth::user()->name) }}
+										</a>
+									</li>
 
-										@if(Auth::user()->nivel == 1)
-										<li>
-											<a href="{{ action('AdministradorController@index') }}">
-												<i class="fa fa-btn fa-lock"></i> Área Administrativa
-											</a>
-										</li>
-										@endif
-										<li>
-											<a href="{{ action('UsuarioController@avaliacoes') }}">
-												<i class="fa fa-btn fa-comments"></i> Meu Comentários
-											</a>
-										</li>
-										<li>
-											<a href="{{ action('Auth\AuthController@getLogout') }}">
-												<i class="fa fa-btn fa-sign-out"></i> Sair
-											</a>
-										</li>
-									</ul>
-								</li>
-								@endif
-							</ul>
-						</div>
+									<li role="separator" class="divider"></li>
+
+									@if(Auth::user()->nivel == 1)
+									<li>
+										<a href="{{ action('AdministradorController@index') }}">
+											<i class="fa fa-btn fa-lock"></i> Área Administrativa
+										</a>
+									</li>
+									@endif
+									<li>
+										<a href="{{ action('UsuarioController@avaliacoes') }}">
+											<i class="fa fa-btn fa-wrench"></i> Meus Dados
+										</a>
+									</li>
+									<li>
+										<a href="{{ action('UsuarioController@avaliacoes') }}">
+											<i class="fa fa-btn fa-comments"></i> Minhas Avaliações
+										</a>
+									</li>
+									<li>
+										<a href="{{ action('Auth\AuthController@getLogout') }}">
+											<i class="fa fa-btn fa-sign-out"></i> Sair
+										</a>
+									</li>
+								</ul>
+							</li>
+							@endif
+						</ul>
 					</div>
-				</nav>
-			</div>
-
-			<div id="content">
-				@yield('content')
-			</div>
+				</div>
+			</nav>
 		</div>
-		@yield('footer')
-	</body>
+
+		<div id="content">
+			@yield('content')
+		</div>
+	</div>
+	@yield('footer')
+</body>
 
 
-	</html>
+</html>
