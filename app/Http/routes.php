@@ -67,4 +67,11 @@ Route::post('Registro', 'Auth\AuthController@postRegister');
 //Logout
 Route::get('Logout', 'Auth\AuthController@getLogout');
 
-Route::get('Usuario/Avaliacoes', 'UsuarioController@avaliacoes');
+//Painel -> Avaliacoes
+Route::get('Painel/Avaliacoes', 'Usuario\AvaliacaoController@index');
+Route::get('Painel/Avaliacoes/Alterar/{id}', 'Usuario\AvaliacaoController@alterar');
+Route::post('Painel/Avaliacoes/Alterar/Salvar', 'Usuario\AvaliacaoController@salvar');
+Route::get('Painel/Avaliacoes/Excluir/{id}', 'Usuario\AvaliacaoController@deletar');
+
+//Painel -> Dados
+Route::get('Painel/Dados', 'Usuario\DadosController@index');

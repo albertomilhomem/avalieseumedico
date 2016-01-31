@@ -75,12 +75,7 @@
 									</li>
 									@endif
 									<li>
-										<a href="{{ action('UsuarioController@avaliacoes') }}">
-											<i class="fa fa-btn fa-wrench"></i> Meus Dados
-										</a>
-									</li>
-									<li>
-										<a href="{{ action('UsuarioController@avaliacoes') }}">
+										<a href="{{ action('Usuario\AvaliacaoController@index') }}">
 											<i class="fa fa-btn fa-comments"></i> Minhas Avaliações
 										</a>
 									</li>

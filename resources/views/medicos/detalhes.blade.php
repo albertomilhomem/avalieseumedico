@@ -48,6 +48,12 @@
 						@include('common.estrelas')
 					</p>
 					<p><strong>Comentário:</strong> {{ $avaliacao->comentario }}</p>
+					@if(Auth::user()->id == $avaliacao->user->id)
+					<div class="col-sm-6 col-sm-offset-3">					
+						<a href="{{ action('Usuario\AvaliacaoController@alterar', $avaliacao->id) }}" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i> Alterar</a>
+						<a href="{{ action('Usuario\AvaliacaoController@deletar', $avaliacao->id) }}" class="btn btn-danger"><i class="fa fa-trash"></i> Excluir</a>
+					</div>
+					@endif
 				</div>
 			</div>
 
