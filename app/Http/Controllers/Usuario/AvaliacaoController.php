@@ -45,7 +45,7 @@ class AvaliacaoController extends Controller
             $avaliacao->nota = $request->nota;
             $avaliacao->comentario = $request->comentario;
             $avaliacao->save();
-            return view('usuario.avaliacao.lista');
+            return redirect()->action('Usuario\AvaliacaoController@index');
         }
         else
         {
