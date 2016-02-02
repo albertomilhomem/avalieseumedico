@@ -21,7 +21,7 @@ class Medico extends Model
 
 	public function avaliacoes()
 	{
-		return $this->hasMany(Avaliacao::class);
+		return $this->hasMany(Avaliacao::class)->orderBy('created_at', 'desc');
 	}
 
 }
