@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Auth;
+use Hash;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -30,9 +31,9 @@ class DadosController extends Controller
         $usuario = Auth::user();
         if(Input::hasFile('file')){
             $file = Input::file('file');
-            $file->move('images', $usuario->id.$usuario->name.$file->getClientOriginalName());
+            $usuario->local = 'img_' . md5($usuario->id . time() . $usuario->name . $file->getClientOriginalName()) . "." . $file->getClientOriginalExtension();
+            $file->move('images', $usuario->local);
             $usuario->imagem = 1;
-            $usuario->local = $usuario->id.$usuario->name.$file->getClientOriginalName();
             $usuario->save();
 
             return redirect()->action('Usuario\DadosController@index');
