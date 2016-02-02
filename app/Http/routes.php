@@ -75,3 +75,18 @@ Route::get('Painel/Avaliacoes/Excluir/{id}', 'Usuario\AvaliacaoController@deleta
 
 //Painel -> Dados
 Route::get('Painel/Dados', 'Usuario\DadosController@index');
+Route::get('Painel/Dados/Imagem', 'Usuario\DadosController@imagem');
+Route::post('Painel/Dados/Imagem/Upload', 'Usuario\DadosController@upload');
+
+get('images/{filename}', function ($filename)
+{
+    $path = storage_path() . '/' . $filename;
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});

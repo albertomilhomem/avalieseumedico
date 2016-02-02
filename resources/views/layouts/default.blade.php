@@ -13,10 +13,11 @@
 
 	@yield('head')
 </head>
+
 <body>
 	<div>
 		<div>
-			<nav class="navbar navbar-inverse navbar-static-top">
+			<nav class="navbar navbar-default navbar-static-top">
 				<div class="container">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -29,24 +30,19 @@
 						<a class="navbar-brand" href="/">Avalie Seu Médico</a>
 					</div>
 
-					<ul class="nav navbar-nav">
-						<li><a href="{{ action('MedicoController@index') }}">Médicos</a></li>
-						<li><a href="{{ action('ClinicaController@index') }}">Clinicas</a></li>
-						<li><a href="{{ action('EspecialidadeController@index') }}">Especialidades</a></li>
-
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mais <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="{{ action('HomeController@contato') }}">Contato</a></li>					
-								<li><a href="{{ action('HomeController@sobre') }}">Sobre</a></li>						
-							</ul>
-						</li>
-					</ul>
-
-
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
-							&nbsp;
+							<li><a href="{{ action('MedicoController@index') }}">Médicos</a></li>
+							<li><a href="{{ action('ClinicaController@index') }}">Clinicas</a></li>
+							<li><a href="{{ action('EspecialidadeController@index') }}">Especialidades</a></li>
+
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mais <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="{{ action('HomeController@contato') }}">Contato</a></li>					
+									<li><a href="{{ action('HomeController@sobre') }}">Sobre</a></li>						
+								</ul>
+							</li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							@if (Auth::guest())
@@ -55,7 +51,12 @@
 							@else
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">
-									<img src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" height="30" width="30" class="img-circle special-img">
+
+									@if(Auth::user()->imagem == true)
+									<img src="/images/{{ Auth::user()->local }}" height="30" width="30" class="img-circle">
+									@else
+									<img src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" height="30" width="30" class="img-circle">
+									@endif
 									<b class="caret"></b>
 								</a>
 								<ul class="dropdown-menu">
@@ -75,6 +76,11 @@
 									</li>
 									@endif
 									<li>
+										<a href="{{ action('Usuario\DadosController@index') }}">
+											<i class="fa fa-btn fa-user"></i> Meus Dados
+										</a>
+									</li>
+									<li>
 										<a href="{{ action('Usuario\AvaliacaoController@index') }}">
 											<i class="fa fa-btn fa-comments"></i> Minhas Avaliações
 										</a>
@@ -92,13 +98,10 @@
 				</div>
 			</nav>
 		</div>
-
 		<div id="content">
 			@yield('content')
 		</div>
 	</div>
 	@yield('footer')
 </body>
-
-
 </html>
