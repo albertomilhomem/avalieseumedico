@@ -15,14 +15,8 @@
 				<strong>{{ $avaliacao->medico->nome }}</strong>
 				- {{ date('d/m/Y', strtotime($avaliacao->created_at)) }}
 			</div>
-			<div class="panel-body">
-				<p>
-					<strong>Nota:</strong>			
-					@include('common.estrelas')
-				</p>
-				<p>
-					<strong>Comentário:</strong> {{ $avaliacao->comentario }}
-				</p>
+			<div class="panel-body">				
+				@include('medicos.avaliacao')
 				<div class="col-sm-6 col-sm-offset-3">					
 					<a href="{{ action('Usuario\AvaliacaoController@alterar', $avaliacao->id) }}" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i> Alterar</a>
 					<a href="{{ action('Usuario\AvaliacaoController@deletar', $avaliacao->id) }}" class="btn btn-danger"><i class="fa fa-trash"></i> Excluir</a>
