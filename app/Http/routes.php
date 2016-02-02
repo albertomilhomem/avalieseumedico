@@ -78,9 +78,9 @@ Route::get('Painel/Dados', 'Usuario\DadosController@index');
 Route::get('Painel/Dados/Imagem', 'Usuario\DadosController@imagem');
 Route::post('Painel/Dados/Imagem/Upload', 'Usuario\DadosController@upload');
 
-get('images/{filename}', function ($filename)
+Route::get('images/{filename}', function ($filename)
 {
-    $path = storage_path() . '/' . $filename;
+    $path = storage_path() . '/images/' . $filename;
 
     $file = File::get($path);
     $type = File::mimeType($path);
@@ -89,4 +89,8 @@ get('images/{filename}', function ($filename)
     $response->header("Content-Type", $type);
 
     return $response;
+});
+
+Route::get('/*', function () {
+    return view('errors.404');
 });

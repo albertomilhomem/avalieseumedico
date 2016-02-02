@@ -32,7 +32,7 @@ class DadosController extends Controller
         if(Input::hasFile('file')){
             $file = Input::file('file');
             $usuario->local = 'img_' . md5($usuario->id . time() . $usuario->name . $file->getClientOriginalName()) . "." . $file->getClientOriginalExtension();
-            $file->move('images', $usuario->local);
+            $file->move(storage_path() . '/images/', $usuario->local);
             $usuario->imagem = 1;
             $usuario->save();
 
