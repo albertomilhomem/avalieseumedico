@@ -74,6 +74,8 @@
 											<i class="fa fa-btn fa-lock"></i> Área Administrativa
 										</a>
 									</li>
+
+									<li role="separator" class="divider"></li>
 									@endif
 									<li>
 										<a href="{{ action('Usuario\DadosController@index') }}">
