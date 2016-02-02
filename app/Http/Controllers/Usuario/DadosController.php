@@ -31,7 +31,11 @@ class DadosController extends Controller
         $usuario = Auth::user();
         if(Input::hasFile('file')){
             $file = Input::file('file');
-            $usuario->local = 'img_' . md5($usuario->id . time() . $usuario->name . $file->getClientOriginalName()) . "." . $file->getClientOriginalExtension();
+            $usuario->local = 'img_' . md5($usuario->id . time() . $usuario->name . $file->getClientOriginalName());
+            if (!Empty($file->getClientOriginalExtension())) 
+            {
+                $usuario->local = $usuario->local . '.' . $file->getClientOriginalExtension();
+            }
             $file->move(storage_path() . '/images/', $usuario->local);
             $usuario->imagem = 1;
             $usuario->save();
@@ -42,6 +46,6 @@ class DadosController extends Controller
         {
             return redirect()->back();            
         }
-        
+
     }
 }

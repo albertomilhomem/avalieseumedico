@@ -80,17 +80,23 @@ Route::post('Painel/Dados/Imagem/Upload', 'Usuario\DadosController@upload');
 
 Route::get('images/{filename}', function ($filename)
 {
-    $path = storage_path() . '/images/' . $filename;
+	$path = storage_path() . '/images/' . $filename;
+	if (file_exists($path)) 
+	{
+		$file = File::get($path);
+		$type = File::mimeType($path);
 
-    $file = File::get($path);
-    $type = File::mimeType($path);
+		$response = Response::make($file, 200);
+		$response->header("Content-Type", $type);
 
-    $response = Response::make($file, 200);
-    $response->header("Content-Type", $type);
-
-    return $response;
+		return $response;
+	}
+	else
+	{
+		return view('errors.404');		
+	}
 });
 
 Route::get('/*', function () {
-    return view('errors.404');
+	return view('errors.404');
 });
