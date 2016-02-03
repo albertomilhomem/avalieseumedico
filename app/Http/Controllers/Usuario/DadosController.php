@@ -26,6 +26,32 @@ class DadosController extends Controller
         return view('usuario.dados.imagem');        
     }
 
+    public function senha(Request $request)
+    {
+        $usuario = Auth::user();
+        if (Hash::check($request->senhaAtual, $usuario->password))
+        {
+            if ($request->novaSenha == $request->verificacaoSenha) 
+            {
+                $usuario->password = bcrypt($request->novaSenha);
+                $usuario->save();
+
+                return redirect()->back()->with('success', 'Senha alterada com sucesso!');
+
+            }
+            else
+            {
+                $errors = "A confirmação de senha não confere";
+            }
+        }
+        else
+        {
+            $errors = "A senha atual digitada não confere";
+        }
+
+        return redirect()->back()->withErrors(array('errors' => $errors));
+    }
+
     public function upload(Request $request)
     {
         $usuario = Auth::user();
@@ -46,6 +72,5 @@ class DadosController extends Controller
         {
             return redirect()->back();            
         }
-
     }
 }

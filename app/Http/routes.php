@@ -77,6 +77,7 @@ Route::get('Painel/Avaliacoes/Excluir/{id}', 'Usuario\AvaliacaoController@deleta
 Route::get('Painel/Dados', 'Usuario\DadosController@index');
 Route::get('Painel/Dados/Imagem', 'Usuario\DadosController@imagem');
 Route::post('Painel/Dados/Imagem/Upload', 'Usuario\DadosController@upload');
+Route::post('Painel/Dados/Senha', 'Usuario\DadosController@senha');
 
 Route::get('images/{filename}', function ($filename)
 {
