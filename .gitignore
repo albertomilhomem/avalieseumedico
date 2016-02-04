@@ -4,5 +4,4 @@ Homestead.json
 .env
 /public
 /vendor
-/public_html
 /storage/images/*
