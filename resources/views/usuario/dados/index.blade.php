@@ -1,15 +1,16 @@
 @extends('layouts.default')
 @section('head')
-<title>Avalie Seu Médico - Minhas Avaliacoes</title>
+<title>Avalie Seu Médico - Meus Dados</title>
 
 <link rel="stylesheet" href="/css/fileinput.css">
+<script src="/js/cidades-estados-utf8.js"></script>
 @endsection
 
 @section('content')
 <div class="container">
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
 
-		
+
 		@include('common.errors')
 
 		<div class="panel panel-default">
@@ -35,25 +36,56 @@
 							<tbody>
 								<tr>
 									<td>E-mail:</td>
-									<td><a href="mailto:{{Auth::user()->email}}">{{Auth::user()->email}}</a></td>
+									<td>
+										<a href="mailto:{{Auth::user()->email}}">{{Auth::user()->email}}</a>
+									</td>
 								</tr>
 								<tr>
 									<td>Data de Nascimento</td>
-									<td></td>
+									<td>
+										@if(!Empty(Auth::user()->dataNascimento))
+										{{ date('d/m/Y', strtotime(Auth::user()->dataNascimento)) }}
+										@else
+										Não informado
+										@endif
+									</td>
 								</tr>
 
 								<tr>
 									<tr>
 										<td>Gênero</td>
-										<td></td>
+										<td>											
+											@if(!Empty(Auth::user()->genero))
+											@if(Auth::user()->genero == 1)
+											Masculino
+											@else
+											Feminino
+											@endif
+											@else
+											Não informado
+											@endif
+										</td>
+									</tr>
+									<tr>
+										<td>Estado</td>
+										<td>
+											@if(!Empty(Auth::user()->estado))
+											{{ Auth::user()->estado }}
+											@else
+											Não informado
+											@endif
+										</td>
 									</tr>
 									<tr>
 										<td>Cidade</td>
-										<td></td>
+										<td>
+											@if(!Empty(Auth::user()->cidade))
+											{{ Auth::user()->cidade }}
+											@else
+											Não informado
+											@endif
+										</td>
 									</tr>
-									<td>Telefone</td>
-									<td><br><br>
-									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -61,14 +93,15 @@
 				</div>
 			</div>
 			<div class="panel-footer" align="center">
-				<a href="#" class="btn btn-success"><i class="glyphicon glyphicon-edit"></i> Editar</a>
-				<a href="#" class="btn btn-warning" type="button" data-toggle="modal" data-target="#modalSenha"><i class="glyphicon glyphicon-remove"></i> Alterar senha</a>
+				<a class="btn btn-success" type="button" data-toggle="modal" data-target="#modalAlterar"><i class="glyphicon glyphicon-edit" ></i> Editar</a>
+				<a class="btn btn-warning" type="button" data-toggle="modal" data-target="#modalSenha"><i class="glyphicon glyphicon-remove"></i> Alterar senha</a>
 			</div>
 		</div>
 	</div>
 
 	@include('usuario.dados.senha')
 	@include('usuario.dados.imagem')
+	@include('usuario.dados.alterar')
 
 </div>
 @endsection

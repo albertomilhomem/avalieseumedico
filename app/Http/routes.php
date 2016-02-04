@@ -78,6 +78,7 @@ Route::get('Painel/Dados', 'Usuario\DadosController@index');
 Route::get('Painel/Dados/Imagem', 'Usuario\DadosController@imagem');
 Route::post('Painel/Dados/Imagem/Upload', 'Usuario\DadosController@upload');
 Route::post('Painel/Dados/Senha', 'Usuario\DadosController@senha');
+Route::post('Painel/Dados/Alterar', 'Usuario\DadosController@alterar');
 
 Route::get('images/{filename}', function ($filename)
 {

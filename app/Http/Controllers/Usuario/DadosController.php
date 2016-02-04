@@ -26,6 +26,30 @@ class DadosController extends Controller
         return view('usuario.dados.imagem');        
     }
 
+    public function alterar(Request $request)
+    {
+        $usuario = Auth::user();
+        $usuario->name = $request->name;
+        $usuario->email = $request->email;
+        $usuario->dataNascimento = $request->dataNascimento;
+        if (!Empty($request->genero)) 
+        {
+            $usuario->genero = $request->genero;
+        }        
+        if (!Empty($request->estado))
+        {            
+            $usuario->estado = $request->estado;
+        }
+        if (!Empty($request->cidade)) 
+        {
+            $usuario->cidade = $request->cidade;
+        }
+        $usuario->save();
+
+        return redirect()->back()->with('success', 'Dados alterados com sucesso!');
+
+    }
+
     public function senha(Request $request)
     {
         $usuario = Auth::user();
