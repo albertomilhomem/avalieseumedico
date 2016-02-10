@@ -2,13 +2,13 @@ html,
 body { height: 100%; }
 
 body {
-  display: table;
-  width: 100%;
+	display: table;
+	width: 100%;
 }
 
 .page-row {
-  display: table-row;
-  height: 1px;
+	display: table-row;
+	height: 1px;
 }
 
 .page-row-expanded { height: 100%; }
@@ -29,10 +29,15 @@ body {
 	margin-bottom: 40px;
 }
 .panel-default > .panel-heading {
-    font-weight:bold;
+	font-weight:bold;
 }
 
 .navbar-nav>li>a.profile-image {
-    padding-top: 10px;
-    padding-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.footer>.container>div>p>i.fa-heart
+{
+	color: #CC0000;
 }

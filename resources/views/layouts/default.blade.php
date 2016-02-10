@@ -103,7 +103,15 @@
 		<div id="content">
 			@yield('content')
 		</div>
-	</div>
-	@yield('footer')
+	</div>	
+	<footer class="page-row">
+		<div class="footer">
+			<div class="container">
+				<div class="text-center">
+					<p>Feito com <i class="fa fa-heart"></i> por <a href="http://www.twitter.com/porralberto" target="_blank">@porralberto</a></p>
+				</div>
+			</div>
+		</div>
+	</footer>
 </body>
 </html>
