@@ -61,7 +61,7 @@
 								</a>
 								<ul class="dropdown-menu">
 									<li>
-										<a>
+										<a href="/{{ Auth::user()->showName }}">
 											{{ (Auth::user()->name) }}
 										</a>
 									</li>
@@ -79,7 +79,7 @@
 									@endif
 									<li>
 										<a href="{{ action('Usuario\DadosController@index') }}">
-											<i class="fa fa-btn fa-user"></i> Meus Dados
+											<i class="fa fa-btn fa-user"></i> Editar Perfil
 										</a>
 									</li>
 									<li>

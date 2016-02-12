@@ -28,6 +28,15 @@
 						</div>
 					</div>
 
+					<div class="form-group">
+						<label for="showName" class="col-sm-3 control-label">Nome de usuário</label>
+
+						<div class="col-sm-6">
+							<input type="text" name="showName" class="form-control" value="{{ old('showName') }}">
+						</div>
+					</div>
+
+
 					<!-- E-Mail Address -->
 					<div class="form-group">
 						<label for="email" class="col-sm-3 control-label">E-mail</label>

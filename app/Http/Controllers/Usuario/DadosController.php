@@ -32,6 +32,7 @@ class DadosController extends Controller
         $usuario->name = $request->name;
         $usuario->email = $request->email;
         $usuario->dataNascimento = $request->dataNascimento;
+        $usuario->showName = $request->showName;
         if (!Empty($request->genero)) 
         {
             $usuario->genero = $request->genero;

@@ -80,6 +80,10 @@ Route::post('Painel/Dados/Imagem/Upload', 'Usuario\DadosController@upload');
 Route::post('Painel/Dados/Senha', 'Usuario\DadosController@senha');
 Route::post('Painel/Dados/Alterar', 'Usuario\DadosController@alterar');
 
+
+Route::get('/{showName}', 'Usuario\PerfilController@show');
+
+
 Route::get('images/{filename}', function ($filename)
 {
 	$path = storage_path() . '/images/' . $filename;
