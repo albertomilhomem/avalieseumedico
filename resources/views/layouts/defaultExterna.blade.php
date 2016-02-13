@@ -54,7 +54,7 @@
 						</a>
 						<ul class="dropdown-menu">
 							<li>
-								<a>
+								<a href="/{{Auth::user()->showName}}">
 									{{ (Auth::user()->name) }}
 								</a>
 							</li>
