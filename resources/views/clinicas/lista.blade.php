@@ -1,10 +1,7 @@
 @if (count($clinicas) > 0)
-<div class="panel panel-default">
-	<div class="panel-heading">
-		Clinicas
-	</div>
 
-	<div class="panel-body">
+		<h2 class="text-center">Clínicas</h2>
+
 		<table class="table">
 			<thead>
 				<tr>
@@ -27,6 +24,5 @@
 				@endforeach
 			</tbody>
 		</table>
-	</div>
-</div>
+
 @endif

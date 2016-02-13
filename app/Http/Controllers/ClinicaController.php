@@ -29,7 +29,14 @@ class ClinicaController extends Controller
     public function show($id)
     {
         $clinica = Clinica::find($id);
-        return view('clinicas.detalhes')->with('clinica', $clinica);
+        if (!empty($clinica)) 
+        {
+            return view('clinicas.detalhes')->with('clinica', $clinica);
+        }
+        else
+        {
+            return view('errors.404');
+        }
     }
 
     /**
