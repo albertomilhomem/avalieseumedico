@@ -54,7 +54,7 @@
 						</a>
 						<ul class="dropdown-menu">
 							<li>
-								<a href="/{{Auth::user()->showName}}">
+								<a href="{{ action('Usuario\PerfilController@show', Auth::user()->showName) }}">
 									{{ (Auth::user()->name) }}
 								</a>
 							</li>

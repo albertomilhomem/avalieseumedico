@@ -1,5 +1,5 @@
 <div class="media-left media-middle">
-	<a href="/{{  $avaliacao->user->showName }}">
+	<a href="{{ action('Usuario\PerfilController@show', $avaliacao->user->showName) }}">
 		@if($avaliacao->user->imagem == true)
 		<img src="/images/{{ $avaliacao->user->local }}" height="60" width="60" class="img-circle">
 		@else
