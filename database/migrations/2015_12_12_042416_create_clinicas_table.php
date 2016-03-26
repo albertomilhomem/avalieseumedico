@@ -19,6 +19,8 @@ class CreateClinicasTable extends Migration
             $table->string('rua');
             $table->string('numero');
             $table->string('bairro');
+            $table->boolean('avatar')->nullable();
+            $table->string('avatar_local')->nullable();
             $table->timestamps();
         });
     }

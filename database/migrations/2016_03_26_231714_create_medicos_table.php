@@ -15,9 +15,18 @@ class CreateMedicosTable extends Migration
         Schema::create('medicos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');
-            $table->integer('clinica_id')->index();
-            $table->integer('especialidade_id')->index();
+            $table->integer('nota')->nullable();
+            $table->boolean('avatar')->nullable();
+            $table->string('avatar_local')->nullable();
+            $table->integer('clinica_id')->unsigned()->nullable();
+            $table->integer('especialidade_id')->unsigned()->nullable();
             $table->timestamps();
+        });
+
+
+        Schema::table('medicos', function($table){            
+            $table->foreign('clinica_id')->references('id')->on('clinicas')->onDelete('cascade');
+            $table->foreign('especialidade_id')->references('id')->on('especialidades')->onDelete('cascade');
         });
     }
 

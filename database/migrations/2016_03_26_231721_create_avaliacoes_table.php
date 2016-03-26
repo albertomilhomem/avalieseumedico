@@ -16,9 +16,14 @@ class CreateAvaliacoesTable extends Migration
             $table->increments('id');
             $table->integer('nota');
             $table->string('comentario');
-            $table->integer('user_id')->index();
-            $table->integer('medico_id')->index();
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('medico_id')->unsigned()->nullable();
             $table->timestamps();
+        });
+
+        Schema::table('avaliacoes', function($table){
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('medico_id')->references('id')->on('medicos')->onDelete('cascade');
         });
     }
 

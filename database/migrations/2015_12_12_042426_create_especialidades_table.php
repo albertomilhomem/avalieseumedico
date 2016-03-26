@@ -16,6 +16,8 @@ class CreateEspecialidadesTable extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->string('descricao');
+            $table->boolean('avatar')->nullable();
+            $table->string('avatar_local')->nullable();
             $table->timestamps();
         });
     }
