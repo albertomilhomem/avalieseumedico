@@ -6,8 +6,10 @@
 @section('content')
 <div class="container">
 	<div class="col-sm-offset-2 col-sm-8">
-
-	<p class="text-center">Não é registrado ainda? Registre-se <a href="{{ action('Auth\AuthController@getRegister') }}">aqui</a> </p>
+		<div class="alert alert-info" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<p class="text-center">Não é registrado ainda? Registre-se <a href="{{ action('Auth\AuthController@getRegister') }}">aqui</a></p>
+		</div>
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				Área de Login
