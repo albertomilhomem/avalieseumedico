@@ -45,8 +45,8 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">
 
-							@if(Auth::user()->imagem == true)
-							<img src="/images/{{ Auth::user()->local }}" height="30" width="30" class="img-circle">
+							@if(Auth::user()->avatar == true)
+							<img src="/images/{{ Auth::user()->avatar_name }}" height="30" width="30" class="img-circle">
 							@else
 							<img src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" height="30" width="30" class="img-circle">
 							@endif
@@ -54,14 +54,14 @@
 						</a>
 						<ul class="dropdown-menu">
 							<li>
-								<a href="{{ action('Usuario\PerfilController@show', Auth::user()->showName) }}">
+								<a href="{{ action('Usuario\PerfilController@show', Auth::user()->user_name) }}">
 									{{ (Auth::user()->name) }}
 								</a>
 							</li>
 
 							<li role="separator" class="divider"></li>
 
-							@if(Auth::user()->nivel == 1)
+							@if(Auth::user()->admin == true)
 							<li>
 								<a href="{{ action('AdministradorController@index') }}">
 									<i class="fa fa-btn fa-lock"></i> Área Administrativa

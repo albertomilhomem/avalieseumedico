@@ -11,9 +11,9 @@ use App\Http\Controllers\Controller;
 
 class PerfilController extends Controller
 {
-	public function show($showName)
+	public function show($user_name)
 	{
-		$user = User::where('showName', '=', $showName)->first();
+		$user = User::where('user_name', '=', $user_name)->first();
 
 		if (!empty($user)) 
 		{

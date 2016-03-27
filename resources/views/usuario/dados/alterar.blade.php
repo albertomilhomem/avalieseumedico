@@ -24,10 +24,10 @@
 					</div>
 
 					<div class="form-group">
-						<label for="showName" class="col-sm-4 control-label">Nome de usuário</label>
+						<label for="user_name" class="col-sm-4 control-label">Nome de usuário</label>
 
 						<div class="col-sm-6">
-							<input type="text" name="showName" class="form-control" value="{{ Auth::user()->showName }}">
+							<input type="text" name="user_name" class="form-control" value="{{ Auth::user()->user_name }}">
 						</div>
 					</div>
 

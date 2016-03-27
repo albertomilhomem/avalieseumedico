@@ -32,7 +32,7 @@ class DadosController extends Controller
         $usuario->name = $request->name;
         $usuario->email = $request->email;
         $usuario->dataNascimento = $request->dataNascimento;
-        $usuario->showName = $request->showName;
+        $usuario->user_name = $request->user_name;
         if (!Empty($request->genero)) 
         {
             $usuario->genero = $request->genero;
@@ -82,13 +82,13 @@ class DadosController extends Controller
         $usuario = Auth::user();
         if(Input::hasFile('file')){
             $file = Input::file('file');
-            $usuario->local = 'img_' . md5($usuario->id . time() . $usuario->name . $file->getClientOriginalName());
+            $usuario->avatar_name = 'img_' . md5($usuario->id . time() . $usuario->name . $file->getClientOriginalName());
             if (!Empty($file->getClientOriginalExtension())) 
             {
-                $usuario->local = $usuario->local . '.' . $file->getClientOriginalExtension();
+                $usuario->avatar_name = $usuario->avatar_name . '.' . $file->getClientOriginalExtension();
             }
-            $file->move(storage_path() . '/images/', $usuario->local);
-            $usuario->imagem = 1;
+            $file->move(storage_path() . '/images/', $usuario->avatar_name);
+            $usuario->avatar = 1;
             $usuario->save();
 
             return redirect()->action('Usuario\DadosController@index');

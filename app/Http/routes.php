@@ -81,7 +81,7 @@ Route::post('Painel/Dados/Senha', 'Usuario\DadosController@senha');
 Route::post('Painel/Dados/Alterar', 'Usuario\DadosController@alterar');
 
 
-Route::get('/{showName}', 'Usuario\PerfilController@show');
+Route::get('/{user_name}', 'Usuario\PerfilController@show');
 
 
 Route::get('images/{filename}', function ($filename)

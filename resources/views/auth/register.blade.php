@@ -29,10 +29,10 @@
 					</div>
 
 					<div class="form-group">
-						<label for="showName" class="col-sm-3 control-label">Nome de usuário</label>
+						<label for="user_name" class="col-sm-3 control-label">Nome de usuário</label>
 
 						<div class="col-sm-6">
-							<input type="text" name="showName" class="form-control" value="{{ old('showName') }}">
+							<input type="text" name="user_name" class="form-control" value="{{ old('user_name') }}">
 						</div>
 					</div>
 

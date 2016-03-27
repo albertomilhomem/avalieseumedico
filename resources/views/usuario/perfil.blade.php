@@ -16,8 +16,8 @@
 		<div class="panel-body">
 			<div class="row">
 				<div class="col-md-3 col-lg-3 " align="center"> 
-					@if($user->imagem == true)
-					<img alt="User Pic" src="/images/{{ $user->local }}" class="img-circle img-responsive">
+					@if($user->avatar == true)
+					<img alt="User Pic" src="/images/{{ $user->avatar_name }}" class="img-circle img-responsive">
 					@else
 					<img alt="User Pic" src="
 					http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" class="img-circle img-responsive">
