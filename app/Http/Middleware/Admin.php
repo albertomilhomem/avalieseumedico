@@ -45,7 +45,7 @@ class Admin
         }
         else
         {
-            if ($this->auth->user()->nivel == 1) {                
+            if ($this->auth->user()->admin == 1) {                
                 return $next($request);
             }
             else
